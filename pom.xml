@@ -1,0 +1,103 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.fatebug.cloud</groupId>
+    <artifactId>fate-framework</artifactId>
+    <version>0.0.1-SNAPSHOTS</version>
+    <name>fate-framework</name>
+    <packaging>pom</packaging>
+
+    <description>
+        fate-framework 应用框架
+    </description>
+
+    <properties>
+        <maven.plugin.version>3.13.0</maven.plugin.version>
+        <spring-boot.version>3.2.7</spring-boot.version>
+        <springboot3.version>3.2.7</springboot3.version>
+        <spring.cloud-version>2023.0.2</spring.cloud-version>
+        <spring.cloud.alibaba-version>2023.0.1.2</spring.cloud.alibaba-version>
+
+        <java.version>17</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <docker.registry.url>registry.fatebug.com</docker.registry.url>
+        <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
+    </properties>
+
+    <modules>
+        <module>fate-zpom</module>
+        <module>fate-base-utils</module>
+        <module>fate-base-cloud</module>
+        <module>fate-base-auto</module>
+        <module>fate-base-launch</module>
+        <module>fate-base-core</module>
+        <module>fate-base-test</module>
+        <module>fate-starter-auth</module>
+        <module>fate-starter-datasource</module>
+        <module>fate-starter-log</module>
+        <module>fate-starter-redis</module>
+        <module>fate-starter-security</module>
+        <module>fate-starter-swagger</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.fatebug.cloud</groupId>
+                <artifactId>fate-zpom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- SpringBoot 依赖配置 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- SpringCloud 微服务 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- SpringCloud Alibaba 微服务 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring.cloud.alibaba-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- bootstrap 启动器 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

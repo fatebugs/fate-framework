@@ -1,0 +1,35 @@
+#springdoc-openapi项目配置
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: order
+    operations-sorter: order
+    persist-authorization: true
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  # 默认是false，需要设置为true
+  default-flat-param-object: true
+#knife4j配置
+knife4j:
+  #启用
+  enable: true
+  #增强配置
+  setting:
+    enable-swagger-models: true
+    enable-dynamic-parameter: true
+    enable-document-manage: true
+    enable-host: false
+    enable-host-text: http://localhost
+    enable-request-cache: true
+    enable-filter-multipart-apis: false
+    enable-filter-multipart-api-method-type: POST
+    enable-footer: false
+    enable-footer-custom: true
+    language: zh_cn
+#swagger公共信息
+swagger:
+  title: 接口文档系统
+  description: 接口文档系统
+  license: Powered By FateBug
+  version: 0.0.1-SNAPSHOT

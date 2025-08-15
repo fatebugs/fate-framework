@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.fatebug.cloud</groupId>
+        <artifactId>fate-framework</artifactId>
+        <version>0.0.1-SNAPSHOTS</version>
+    </parent>
+    <version>${project.parent.version}</version>
+
+    <artifactId>fate-base-cloud</artifactId>
+    <packaging>jar</packaging>
+
+    <description>
+        fate-base-cloud 基础云服务
+    </description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fatebug.cloud</groupId>
+            <artifactId>fate-base-launch</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fatebug.cloud</groupId>
+            <artifactId>fate-base-utils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fatebug.cloud</groupId>
+            <artifactId>fate-base-auto</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fatebug.cloud</groupId>
+            <artifactId>fate-starter-redis</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>
