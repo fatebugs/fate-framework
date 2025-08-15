@@ -22,20 +22,18 @@ public class FateApplication {
 
     public static SpringApplicationBuilder createSpringApplicationBuilder(String appName, Class source, String... args) {
         Assert.hasText(appName, "[appName]服务名不能为空");
+
         // 读取环境变量，使用spring boot的规则
         ConfigurableEnvironment environment = new StandardEnvironment();
         MutablePropertySources propertySources = environment.getPropertySources();
         propertySources.addFirst(new SimpleCommandLinePropertySource(args));
         propertySources.addLast(new MapPropertySource(StandardEnvironment.SYSTEM_PROPERTIES_PROPERTY_SOURCE_NAME, environment.getSystemProperties()));
         propertySources.addLast(new SystemEnvironmentPropertySource(StandardEnvironment.SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME, environment.getSystemEnvironment()));
+
         // 获取配置的环境变量
         String[] activeProfiles = environment.getActiveProfiles();
         // 判断环境:dev、test、prod
         List<String> profiles = Arrays.asList(activeProfiles);
-        // 预设的环境
-        List<String> presetProfiles = new ArrayList<>(Arrays.asList(AppConstant.DEV_CODE, AppConstant.TEST_CODE, AppConstant.PROD_CODE));
-        // 交集
-        presetProfiles.retainAll(profiles);
         // 当前使用
         List<String> activeProfileList = new ArrayList<>(profiles);
         Function<Object[], String> joinFun = StringUtils :: arrayToCommaDelimitedString;
@@ -62,6 +60,7 @@ public class FateApplication {
         props.setProperty("file.encoding", StandardCharsets.UTF_8.name());
         props.setProperty("loadbalancer.client.name", appName);
         props.setProperty("spring.cloud.loadbalancer.eager-load.clients", "*");
+        props.setProperty("fate.is_local", String.valueOf(isLocalDev()));
 
         Properties defaultProperties = new Properties();
         defaultProperties.setProperty("spring.main.allow-bean-definition-overriding", "true");
