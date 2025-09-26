@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.fatebug.cloud</groupId>
+        <artifactId>fate-framework</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <version>${project.parent.version}</version>
+
+    <artifactId>fate-starter-MQ</artifactId>
+    <packaging>jar</packaging>
+
+    <description>
+        fate-starter-MQ 消息队列启动器
+    </description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fatebug.cloud</groupId>
+            <artifactId>fate-base-launch</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fatebug.cloud</groupId>
+            <artifactId>fate-base-utils</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-json</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fatebug.cloud</groupId>
+            <artifactId>fate-base-auto</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>
