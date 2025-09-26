@@ -4,6 +4,7 @@ import cn.hutool.core.util.ObjectUtil;
 import com.alibaba.csp.sentinel.util.StringUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.lang.Nullable;
 import org.springframework.util.StringUtils;
 
@@ -19,7 +20,7 @@ import static org.apache.commons.lang3.math.NumberUtils.toLong;
  * 通用工具类
  * @author fatebug
  */
-public class Fate {
+public class Fate extends ObjectUtils {
 
     public static List<String> toListSplit(String str){
         return Arrays.asList(str.split(","));

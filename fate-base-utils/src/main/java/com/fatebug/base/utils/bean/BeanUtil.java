@@ -1,5 +1,6 @@
 package com.fatebug.base.utils.bean;
 
+import com.alibaba.fastjson2.JSON;
 import com.fatebug.base.utils.ClassUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
@@ -7,6 +8,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.PropertyAccessorFactory;
 import org.springframework.lang.Nullable;
 
+import java.beans.PropertyDescriptor;
 import java.util.*;
 
 /**
@@ -123,4 +125,91 @@ public class BeanUtil extends BeanUtils {
 		BeanWrapper beanWrapper = PropertyAccessorFactory.forBeanPropertyAccess(bean);
 		beanWrapper.setPropertyValue(propertyName, value);
 	}
+
+    /**
+     * 将Bean转换为Map (使用FastJSON)
+     *
+     * @param bean 实体类对象
+     * @return Map
+     */
+    public static Map<String, Object> beanToMapViaJson(Object bean) {
+        if (bean == null) {
+            return Collections.emptyMap();
+        }
+        return JSON.parseObject(JSON.toJSONString(bean));
+    }
+
+    /**
+     * 将Bean转换为Map
+     *
+     * @param bean 实体类对象
+     * @param ignoreNull 是否忽略值为null的属性
+     * @return Map
+     */
+    public static Map<String, Object> beanToMap(Object bean, boolean ignoreNull) {
+        if (bean == null) {
+            return Collections.emptyMap();
+        }
+        Map<String, Object> map = new HashMap<>();
+        BeanWrapper beanWrapper = PropertyAccessorFactory.forBeanPropertyAccess(bean);
+        PropertyDescriptor[] pds = beanWrapper.getPropertyDescriptors();
+        for (PropertyDescriptor pd : pds) {
+            String propertyName = pd.getName();
+            // 排除class属性
+            if (!"class".equals(propertyName)) {
+                Object value = beanWrapper.getPropertyValue(propertyName);
+                if (!ignoreNull || value != null) {
+                    map.put(propertyName, value);
+                }
+            }
+        }
+        return map;
+    }
+
+    /**
+     * 将Bean转换为Map，支持嵌套对象
+     *
+     * @param bean 实体类对象
+     * @param ignoreNull 是否忽略值为null的属性
+     * @param ignoreEmptyString 是否忽略空字符串
+     * @return Map
+     */
+    public static Map<String, Object> beanToMapDeep(Object bean, boolean ignoreNull, boolean ignoreEmptyString) {
+        if (bean == null) {
+            return Collections.emptyMap();
+        }
+        Map<String, Object> map = new HashMap<>();
+        BeanWrapper beanWrapper = PropertyAccessorFactory.forBeanPropertyAccess(bean);
+        PropertyDescriptor[] pds = beanWrapper.getPropertyDescriptors();
+        for (PropertyDescriptor pd : pds) {
+            String propertyName = pd.getName();
+            if (!"class".equals(propertyName)) {
+                Object value = beanWrapper.getPropertyValue(propertyName);
+
+                if (ignoreNull && value == null) {
+                    continue;
+                }
+
+                if (ignoreEmptyString && value instanceof String && ((String) value).isEmpty()) {
+                    continue;
+                }
+
+                // 处理嵌套对象，非基本类型且非集合类型
+                if (value != null && !ClassUtil.isPrimitiveOrWrapper(value.getClass())
+                        && !(value instanceof Collection) && !(value instanceof Map)
+                        && value.getClass().getPackage() != null
+                        && !value.getClass().getPackage().getName().startsWith("java.")) {
+                    map.put(propertyName, beanToMapDeep(value, ignoreNull, ignoreEmptyString));
+                } else {
+                    map.put(propertyName, value);
+                }
+            }
+        }
+        return map;
+    }
+
+    public static Map<String, Object> beanToMapDeep(Object bean){
+        return beanToMapDeep(bean, true, true);
+    }
+
 }

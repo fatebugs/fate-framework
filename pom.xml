@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.fatebug.cloud</groupId>
     <artifactId>fate-framework</artifactId>
-    <version>0.0.1-SNAPSHOTS</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>fate-framework</name>
     <packaging>pom</packaging>
 
@@ -13,10 +13,6 @@
 
     <properties>
         <maven.plugin.version>3.13.0</maven.plugin.version>
-        <spring-boot.version>3.2.7</spring-boot.version>
-        <springboot3.version>3.2.7</springboot3.version>
-        <spring.cloud-version>2023.0.2</spring.cloud-version>
-        <spring.cloud.alibaba-version>2023.0.1.2</spring.cloud.alibaba-version>
 
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -35,9 +31,11 @@
         <module>fate-base-launch</module>
         <module>fate-base-core</module>
         <module>fate-base-test</module>
+        <module>fate-starter-AI</module>
         <module>fate-starter-auth</module>
         <module>fate-starter-datasource</module>
         <module>fate-starter-log</module>
+        <module>fate-starter-MQ</module>
         <module>fate-starter-redis</module>
         <module>fate-starter-security</module>
         <module>fate-starter-swagger</module>
@@ -49,31 +47,6 @@
                 <groupId>com.fatebug.cloud</groupId>
                 <artifactId>fate-zpom</artifactId>
                 <version>${project.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <!-- SpringBoot 依赖配置 -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <!-- SpringCloud 微服务 -->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring.cloud-version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <!-- SpringCloud Alibaba 微服务 -->
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${spring.cloud.alibaba-version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -99,5 +72,27 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <name>releases Repository</name>
+            <url>http://10.31.2.1:18081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>snapshots Repository</name>
+            <url>http://10.31.2.1:18081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <licenses>
+        <license>
+            <name>Apache 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
 
 </project>

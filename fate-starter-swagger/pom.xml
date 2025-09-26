@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.fatebug.cloud</groupId>
         <artifactId>fate-framework</artifactId>
-        <version>0.0.1-SNAPSHOTS</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
     <version>${project.parent.version}</version>
 

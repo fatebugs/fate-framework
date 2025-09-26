@@ -8,11 +8,11 @@
     </parent>
     <version>${project.parent.version}</version>
 
-    <artifactId>fate-starter-log</artifactId>
+    <artifactId>fate-starter-AI</artifactId>
     <packaging>jar</packaging>
 
     <description>
-        fate-common-log 日志模块
+        fate-starter-AI AI模块
     </description>
 
     <properties>
@@ -25,8 +25,8 @@
             <artifactId>fate-base-utils</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.fatebug.cloud</groupId>
-            <artifactId>fate-starter-auth</artifactId>
+            <groupId>com.alibaba.cloud.ai</groupId>
+            <artifactId>spring-ai-alibaba-starter-dashscope</artifactId>
         </dependency>
 
     </dependencies>

@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.fatebug.cloud</groupId>
         <artifactId>fate-framework</artifactId>
-        <version>0.0.1-SNAPSHOTS</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
     <version>${project.parent.version}</version>
 
@@ -33,6 +33,18 @@
             <groupId>com.fatebug.cloud</groupId>
             <artifactId>fate-starter-redis</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>3.1.8</version>
+        </dependency>
+
 
     </dependencies>
 

@@ -8,7 +8,7 @@
         <relativePath />
     </parent>
     <groupId>com.fatebug.cloud</groupId>
-    <version>0.0.1-SNAPSHOTS</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <artifactId>fate-zpom</artifactId>
     <packaging>pom</packaging>
@@ -18,7 +18,14 @@
     </description>
 
     <properties>
-        <java.version>22</java.version>
+        <spring-boot.version>3.5.6</spring-boot.version>
+        <spring.cloud-version>2023.0.2</spring.cloud-version>
+        <spring.cloud.alibaba-version>2023.0.3.3</spring.cloud.alibaba-version>
+
+        <spring.ai.version>1.1.0-SNAPSHOT</spring.ai.version>
+        <spring-ai-alibaba.version>1.0.0.2</spring-ai-alibaba.version>
+
+        <java.version>17</java.version>
         <aliyun.spring.boot.version>1.0.0</aliyun.spring.boot.version>
         <mybatis-plus.version>3.5.7</mybatis-plus.version>
         <alibaba-fastjson2.version>2.0.49</alibaba-fastjson2.version>
@@ -41,6 +48,49 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- SpringBoot 依赖配置 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- SpringCloud 微服务 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- SpringCloud Alibaba 微服务 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring.cloud.alibaba-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- SpringAI 依赖配置 -->
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-bom</artifactId>
+                <version>${spring.ai.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud.ai</groupId>
+                <artifactId>spring-ai-alibaba-bom</artifactId>
+                <version>${spring-ai-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
@@ -198,6 +248,11 @@
             </dependency>
             <dependency>
                 <groupId>com.fatebug.cloud</groupId>
+                <artifactId>fate-starter-AI</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fatebug.cloud</groupId>
                 <artifactId>fate-base-cloud</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -227,5 +282,18 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <name>releases Repository</name>
+            <url>http://10.31.2.1:18081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>snapshots Repository</name>
+            <url>http://10.31.2.1:18081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
