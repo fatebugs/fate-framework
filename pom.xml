@@ -14,6 +14,8 @@
     <properties>
         <maven.plugin.version>3.13.0</maven.plugin.version>
 
+        <project.version>0.0.1-SNAPSHOT</project.version>
+
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -25,11 +27,11 @@
 
     <modules>
         <module>fate-zpom</module>
-        <module>fate-base-utils</module>
-        <module>fate-base-cloud</module>
         <module>fate-base-auto</module>
         <module>fate-base-launch</module>
         <module>fate-base-core</module>
+        <module>fate-base-utils</module>
+        <module>fate-base-cloud</module>
         <module>fate-base-test</module>
         <module>fate-starter-AI</module>
         <module>fate-starter-auth</module>
@@ -93,6 +95,12 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <build>
+        <plugins>
+
+        </plugins>
+    </build>
 
 
 </project>

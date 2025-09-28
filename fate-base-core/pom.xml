@@ -6,7 +6,7 @@
         <artifactId>fate-framework</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <version>${project.parent.version}</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <artifactId>fate-base-core</artifactId>
     <packaging>jar</packaging>
@@ -64,6 +64,7 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
+            <version>4.12.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

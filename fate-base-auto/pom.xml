@@ -6,7 +6,7 @@
         <artifactId>fate-framework</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <version>${project.parent.version}</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <artifactId>fate-base-auto</artifactId>
     <packaging>jar</packaging>
