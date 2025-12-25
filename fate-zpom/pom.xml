@@ -5,7 +5,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.4.5</version>
-        <relativePath />
+        <relativePath/>
     </parent>
     <groupId>com.fatebug.cloud</groupId>
     <version>0.0.1-SNAPSHOT</version>
@@ -22,8 +22,8 @@
         <spring.cloud-version>2024.0.2</spring.cloud-version>
         <spring.cloud.alibaba-version>2023.0.3.3</spring.cloud.alibaba-version>
 
-        <spring.ai.version>1.1.0-SNAPSHOT</spring.ai.version>
-        <spring-ai-alibaba.version>1.0.0.2</spring-ai-alibaba.version>
+        <spring.ai.version>1.1.2</spring.ai.version>
+        <spring-ai-alibaba.version>1.1.0.0-RC2</spring-ai-alibaba.version>
 
         <java.version>17</java.version>
         <aliyun.spring.boot.version>1.0.0</aliyun.spring.boot.version>
@@ -89,6 +89,18 @@
                 <version>${spring-ai-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud.ai</groupId>
+                <artifactId>spring-ai-alibaba-agent-framework</artifactId>
+                <version>1.1.0.0-RC2</version>
+            </dependency>
+            <!-- Assume you are going to use DashScope Model. Refer to docs for how to choose model.-->
+            <dependency>
+                <groupId>com.alibaba.cloud.ai</groupId>
+                <artifactId>spring-ai-alibaba-starter-dashscope</artifactId>
+                <version>1.1.0.0-RC2</version>
             </dependency>
 
             <dependency>
